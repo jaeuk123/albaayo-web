@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # testvue
 
 ## Project setup
@@ -22,3 +23,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+=======
+# albaayo-web
+>>>>>>> af030633b1b8f17e36b2af12419584e674e4d3c0
