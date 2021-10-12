@@ -45,7 +45,9 @@ export default {
         state.Notice.date = data.date;
         state.Notice.memberId = data.memberId;
         state.Notice.name = data.name;
-        
+      },
+      SET_Schedule(state,data){
+        state.Schedule = data;
       }
       
       

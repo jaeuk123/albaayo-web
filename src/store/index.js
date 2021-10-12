@@ -24,6 +24,7 @@ export default new Vuex.Store({
     grouplist:[],
     memberlist:[],
     Noticelist:[],
+    Schedule:[],
     Notice:{
       contents: '',
       date: '',
@@ -51,6 +52,9 @@ export default new Vuex.Store({
     },
     fethcedNotice(state){
       return state.Notice;
+    },
+    fetchSchedule(state) {
+      return state.Schedule;
     }
   },
 

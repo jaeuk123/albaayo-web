@@ -43,6 +43,10 @@ function createschedule(data) {
     { headers: { 'Content-Type': 'application/json' }})
 }
 
+function fetchSchedule(companyId,date) {
+    return axios.get(`${config.baseUrl}/schedule/`+companyId+'/'+date)
+}
+
 //Notice
 function createNotice(memberId,companyId,data) {
     return axios.post(`${config.baseUrl}/notice/`+memberId+'/'+companyId,data,
@@ -68,4 +72,4 @@ function Noticecontent(noticeId){
 
 
 export{ grouplist,creategroup,findworker,groupmain,inviteworker,memberInfo,
-removecompany,updatecompany,createschedule,createNotice,updataeNotice,listNotice,deleteNotice,Noticecontent, }
+removecompany,updatecompany,createschedule,createNotice,updataeNotice,listNotice,deleteNotice,Noticecontent,fetchSchedule}

@@ -21,11 +21,12 @@
         </label>
       </div>
       <div class='demo-app-sidebar-section'>
-        <h2>모든 일정 ({{ currentEvents.length }})</h2>
+        <h2>일정 </h2> 
         <ul>
-          <li id="li2" v-for='event in currentEvents' :key='event.id'>
-            <b>{{ event.startStr }}</b>
-            <i>{{ event.title }}</i>
+          <!-- 일정기록하는곳   -->
+          <li id="li2" >
+            <b>{{ fetchSchedule.date }}</b>
+            <i>{{ fetchSchedule.workSchedule }}</i>
           </li>
         </ul>
       </div>
@@ -35,10 +36,10 @@
         class='demo-app-calendar'
         :options='calendarOptions'
       >
-        <template v-slot:eventContent='arg'>
-          <b>{{ arg.timeText }}</b>
-          <i>{{ arg.event.title }}</i>
-        </template>
+        <!-- <template v-slot:eventContent='arg'>
+          <b>{{ fetchSchedule.title }}</b>
+          <i>{{ arg.event.workSchedule }}</i>
+        </template> -->
       </FullCalendar>
     </div>
   </div>
@@ -78,11 +79,12 @@ export default {
         eventClick: this.handleEventClick,
         eventsSet: this.handleEvents
       },
+      // currentEvents: this.$store.state.Schedule
       currentEvents: []
     }
   },
   methods: {
-    ...mapActions(["Create_Schedule"]),
+    ...mapActions(["Create_Schedule"],["Fetch_Schedule"]),
     handleWeekendsToggle() {
       this.calendarOptions.weekends = !this.calendarOptions.weekends // update a property
     },
@@ -90,40 +92,65 @@ export default {
     handleDateSelect(selectInfo) {
       let title = prompt('일정의 제목을 입력하세요')
       let calendarApi = selectInfo.view.calendar
+      this.$store.dispatch('Fetch_Schedule',selectInfo.startStr);
       // calendarApi.unselect() // clear date selection
       if (title) {
         calendarApi.addEvent({
-          
           title,
           start: selectInfo.startStr,
           end: selectInfo.endStr,
           allDay: selectInfo.allDay
         })
         const data ={
-          workSchedule : title,
+          workSchedule : title ,
           date:selectInfo.startStr,
           companyId: this.$store.state.groupData,
           memberId: this.$store.state.loginData.Id
         }
+        
         this.$store.dispatch('Create_Schedule',data);
+        this.$store.dispatch('Fetch_Schedule',data.date);
+        console.log(this.currentEvents)
+      }
+        
+    },
 
-      }
-    },
     handleEventClick(clickInfo) {
-      if (confirm(`이 일정을 삭제하시겠습니까? '${clickInfo.event.title}'`)) {
-        clickInfo.event.remove()
+      if (confirm(`일정을 새로 등록하시겠습니까? '${clickInfo.event.title}'`)) {
+        let title = prompt('일정의 제목을 입력하세요')
+        let calendarApi = clickInfo.view.calendar
+      // calendarApi.unselect() // clear date selection
+        if (title) {
+          clickInfo.event.remove()
+          calendarApi.addEvent({
+            title,
+            start: clickInfo.event.startStr,
+            end: clickInfo.event.endStr,
+            allDay: clickInfo.event.allDay
+          })
+        const data ={
+          workSchedule : title ,
+          date : clickInfo.event.startStr,
+          companyId: this.$store.state.groupData,
+          memberId: this.$store.state.loginData.Id
+        }
+        console.log(data);
+        this.$store.dispatch('Create_Schedule',data);
+        // clickInfo.event.remove()
+        }
+        
       }
     },
-    created() {
-       this.$store.dispatch('Fetch_Schedule',); 
-    },
+    // created() {
+    //    this.$store.dispatch('Fetch_Schedule',); 
+    // },
     handleEvents(events) {
       this.currentEvents = events
     }
   },
   computed: {
     ...mapState(["userInfo"]),
-    ...mapGetters(['']),
+    ...mapGetters(['fetchSchedule']),
   },
   
 }

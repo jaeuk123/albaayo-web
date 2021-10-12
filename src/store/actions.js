@@ -1,7 +1,7 @@
 import router from "../router/index.js";
 import store from '../store/index.js';
 import { login } from '../api/loginapi';
-import { creategroup, grouplist, groupmain,inviteworker,createNotice,listNotice,Noticecontent,updataeNotice,createschedule } from '../api/companyapi'
+import { creategroup, grouplist, groupmain,inviteworker,createNotice,listNotice,Noticecontent,updataeNotice,createschedule,fetchSchedule } from '../api/companyapi'
 
 export default {
         // 로그인 시도
@@ -52,8 +52,8 @@ export default {
                           })
       },
 
+      // 멤버 리스트
       Fetch_Member({commit},groupId){
-        // 멤버 리스트
         groupmain(this.state.loginData.Id,groupId)
                             .then((response) =>{
                             commit('SET_MEMBER',response.data)
@@ -130,16 +130,32 @@ export default {
       },
 
       //schedule
-      Create_Schedule(state,data){
+      Create_Schedule({commit},data){
+        const  payload = {
+          workSchedule : data.workSchedule,
+          date : data.date
+        }
         createschedule(JSON.stringify(data)).
           then((response) =>{
+            commit('SET_Schedule',payload)
             console.log(response.data)
           }).catch(error => {
             return console.log(error.response)
         });
       },
-      Fetch_Schedule(){
 
+      Fetch_Schedule({commit},date){
+        fetchSchedule(this.state.groupData,date)
+          .then((response) =>{
+            const  payload = {
+              date: date,
+              workSchedule: response.data.workSchedule,
+              id: response.data.id
+            }
+            commit('SET_Schedule',payload)
+          }).catch(error => {
+            return console.log(error.response)
+        });
       }
       
       
