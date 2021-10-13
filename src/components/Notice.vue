@@ -31,10 +31,7 @@ export default {
             currentPage: 0,
             perPage: 10,
             fields:[
-                // {
-                //     key: 'id',
-                //     label: '글번호'
-                // },
+                
                 {
                     key: 'title',
                     label: '제목'
@@ -61,13 +58,14 @@ export default {
        
 	},
     computed: {
-        // rows() {
-        //     return this.items.length
-        // },
         ...mapGetters(['fetchGroup','fetchedNoticelist'])
     },
 
     created(){
+        this.$store.dispatch('Fetch_Notice',this.currentPage); 
+    },
+    
+    beforeCreate(){
         this.$store.dispatch('Fetch_Notice',this.currentPage); 
     },
 }

@@ -61,9 +61,12 @@ function updataeNotice(data) {
 function listNotice(compnayId,page){
     return axios.get(`${config.baseUrl}/notice/`+compnayId+'/'+page)
 }
-function deleteNotice(companyId,page){
-    return axios.delete(`${config.baseUrl}/notice/`+companyId+'/'+page)
+
+function deleteNotice(noticeId){
+    return axios.delete(`${config.baseUrl}/notice/`+noticeId)
+
 }
+
 function Noticecontent(noticeId){
     return axios.get(`${config.baseUrl}/notice/`+noticeId)
 }

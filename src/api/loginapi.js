@@ -26,6 +26,10 @@ function login(payload) {
     );
 }
 
+function logout(memberId) {
+    return axios.get(`${config.baseUrl}/logout/`+memberId)
+}
+
 export {
-    signUpemployer,Idcheck,login
+    signUpemployer,Idcheck,login,logout
 }

@@ -1,7 +1,8 @@
 import router from "../router/index.js";
 import store from '../store/index.js';
 import { login } from '../api/loginapi';
-import { creategroup, grouplist, groupmain,inviteworker,createNotice,listNotice,Noticecontent,updataeNotice,createschedule,fetchSchedule } from '../api/companyapi'
+import { creategroup, grouplist, groupmain,inviteworker,createNotice,listNotice,Noticecontent,updataeNotice,createschedule,fetchSchedule
+        ,deleteNotice,logout } from '../api/companyapi'
 
 export default {
         // 로그인 시도
@@ -27,6 +28,8 @@ export default {
         logout({ commit }) {
           commit("logout");
           router.push({ name: "MainContent" });
+          logout(store.state.loginData.Id)
+          
         },
         // 그룹생성
         CREATE_GROUP({commit},data) {
@@ -121,12 +124,23 @@ export default {
       },
 
       UpdateNotice(state,data){
-        updataeNotice(JSON.stringify(data))
+        const payload = {
+          noticeId : data.noticeId,
+          title : data.title,
+          contents: data.contents,
+          imageList: data.imagelist
+        }
+        console.log(JSON.stringify(payload))
+        updataeNotice(JSON.stringify(payload))
           .then((response) => {
             console.log(response.data)
           }).catch(error => {
             return console.log(error.response)
         });
+      },
+
+      RemoveNotice(state,noticeId){
+        deleteNotice(noticeId)
       },
 
       //schedule

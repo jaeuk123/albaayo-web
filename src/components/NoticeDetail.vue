@@ -40,7 +40,7 @@
 
 <script>
 // import data from "@/data";
-import { mapGetters } from 'vuex';
+import {  mapGetters } from 'vuex';
 // import Comment from "./Comment"
 
 export default {
@@ -66,10 +66,13 @@ export default {
     }
   },
   methods: {
+    // ...mapActions(['RemoveNotice']),
     deleteData() {
+      this.$store.dispatch('RemoveNotice',this.fethcedNotice.noticeId);
       this.$router.push({
         path: `/Notice/${this.fetchGroup}`
       })
+      
     },
     updateData() {
       this.$router.push({
