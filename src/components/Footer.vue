@@ -7,9 +7,6 @@
         {{ new Date().getFullYear() }} — <strong>School of Computer Information 3CPB</strong>
         </v-col>
     </v-footer>
-    <!-- <footer>
-		<p>copyRight ComputerInformation 3CPB</p>
-	</footer> -->
 </template>
 <script>
 export default {

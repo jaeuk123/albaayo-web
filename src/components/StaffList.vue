@@ -64,8 +64,6 @@ export default {
 <style>
 .elevation-1 {
     margin-top: 75px;
-    /*margin-left: 400px; */
     width: 1200px;
-    /* margin: auto; */
 }
 </style>

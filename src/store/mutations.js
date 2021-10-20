@@ -1,5 +1,4 @@
 export default {
-      // 로그인이 실패했을 때.
       loginError(state) {
         state.isLogin = false;
         state.isLoginError = true;
@@ -20,7 +19,6 @@ export default {
         state.isLoginError = false;
       },
       SET_GROUPLIST(state,data) {
-        // state.grouplist.push(data);
         state.grouplist = data;
       },      
       PLUS_GROUP(state) {
@@ -48,6 +46,11 @@ export default {
       },
       SET_Schedule(state,data){
         state.Schedule = data;
+      },
+      SET_INVITE(state,data){
+        state.invite.name = data.name;
+        state.invite.id = data.userId;
+        state.invite.birth = data.birth;
       }
       
       

@@ -48,9 +48,7 @@ import {mapGetters} from 'vuex'
     },
     
     created(){
-      // const Id = this.$route.params.id;
       this.$store.dispatch('Fetch_Grouplist',this.fetchedUser.Id);
-      // console.log(this.fetchedUser.Id)
     },
 
     computed:{

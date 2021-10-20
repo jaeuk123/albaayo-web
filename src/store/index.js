@@ -32,7 +32,9 @@ export default new Vuex.Store({
       name: '',
       noticeId: '',
       title: ''
-  }
+    },
+    invite:{}
+  
   },
   getters:{
     fetchedUser(state) {
@@ -55,6 +57,9 @@ export default new Vuex.Store({
     },
     fetchSchedule(state) {
       return state.Schedule;
+    },
+    fetchInvite(state) {
+      return state.invite;
     }
   },
 

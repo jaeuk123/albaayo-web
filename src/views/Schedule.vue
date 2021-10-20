@@ -36,10 +36,6 @@
         class='demo-app-calendar'
         :options='calendarOptions'
       >
-        <!-- <template v-slot:eventContent='arg'>
-          <b>{{ fetchSchedule.title }}</b>
-          <i>{{ arg.event.workSchedule }}</i>
-        </template> -->
       </FullCalendar>
     </div>
   </div>
@@ -79,7 +75,6 @@ export default {
         eventClick: this.handleEventClick,
         eventsSet: this.handleEvents
       },
-      // currentEvents: this.$store.state.Schedule
       currentEvents: []
     }
   },
@@ -93,7 +88,6 @@ export default {
       let title = prompt('일정의 제목을 입력하세요')
       let calendarApi = selectInfo.view.calendar
       this.$store.dispatch('Fetch_Schedule',selectInfo.startStr);
-      // calendarApi.unselect() // clear date selection
       if (title) {
         calendarApi.addEvent({
           title,
@@ -119,7 +113,6 @@ export default {
       if (confirm(`일정을 새로 등록하시겠습니까? '${clickInfo.event.title}'`)) {
         let title = prompt('일정의 제목을 입력하세요')
         let calendarApi = clickInfo.view.calendar
-      // calendarApi.unselect() // clear date selection
         if (title) {
           clickInfo.event.remove()
           calendarApi.addEvent({
@@ -136,14 +129,12 @@ export default {
         }
         console.log(data);
         this.$store.dispatch('Create_Schedule',data);
-        // clickInfo.event.remove()
+        
         }
         
       }
     },
-    // created() {
-    //    this.$store.dispatch('Fetch_Schedule',); 
-    // },
+
     handleEvents(events) {
       this.currentEvents = events
     }

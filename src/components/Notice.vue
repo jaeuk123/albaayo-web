@@ -18,7 +18,6 @@
 </template>
 
 <script>
-// import data from '@/data';
 import { mapGetters } from 'vuex';
 
 
@@ -26,7 +25,6 @@ export default {
     name: 'Notice',
     data() {
         let items = this.fetchedNoticelist
-        // items = items.map(contentItem => {return {...contentItem, user_name: data.User.filter(userItem => userItem.user_id === contentItem.user_id)[0].name}})
         return {
             currentPage: 0,
             perPage: 10,
@@ -77,9 +75,7 @@ export default {
         font-weight: 700;
     }
     #Notice-table {
-        /* margin-top: 5px; */
         width: 1500px;
-        /* margin: auto; */
     }
     #create_btn {
         margin-top: -80px;

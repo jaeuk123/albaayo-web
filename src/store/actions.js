@@ -11,13 +11,7 @@ export default {
           login(JSON.stringify(this.state.Data))
             .then(response => {
             commit ('SET_LOGINDATA',response.data);
-            // router.push({ name:"GroupList"});
             router.push({ path:`/GroupList/${this.state.loginData.Id}`});
-            // grouplist(this.state.loginData.Id)
-            //               .then((response) => {   
-            //                 commit('SET_GROUPLIST',response.data);                         
-            //                 console.log(this.state.grouplist);
-            //               })
           })
           .catch(function (error) {
             console.log(error);
@@ -36,7 +30,9 @@ export default {
           const payload =  {
               name : data.form.Name,
               location: data.form.address,
-              businessRegistrationNumber: data.form.Number }
+              businessRegistrationNumber: data.form.Number,
+              picture: 	null
+            }
               
               creategroup(JSON.stringify(payload),store.state.loginData.Id)
                           .then((response) => {   
@@ -81,6 +77,7 @@ export default {
           .then((response) =>{
             console.log(payload)
             console.log(response.data)
+            state.commit('SET_INVITE',response.data)
           }).catch(error => {
             return console.log(error.response)
         });

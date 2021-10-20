@@ -7,7 +7,7 @@
                 <b-form-input id="inputIdText" v-model="invid"></b-form-input>
                 <b-input-group-append>
                     <b-button id="SearchButton" variant="outline-success" 
-                    v-on:click='FIND_inviteMember(invid)'>Search</b-button>
+                    v-on:click='inviteon(invid)'>Search</b-button>
                 </b-input-group-append>
             </b-input-group>
     </div>
@@ -29,14 +29,11 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- <tr
-                v-for="item in worker"
-                :key="item.Name"
-                >
-                <td>{{ item.Name }}</td>
-                <td>{{ item.ID }}</td>
-                <td>{{ item.Birth }}</td>
-                </tr> -->
+                <tr>
+                <td>{{ fetchedInvite.name}}</td>
+                <td>{{ fetchedInvite.id}}</td>
+                <td>{{ fetchedInvite.birth}}</td>
+                </tr>
             </tbody>
             </template>
         </v-simple-table>
@@ -49,24 +46,27 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, } from "vuex";
 
 export default {
      data () {
       return {
           invid:'',
-        worker: [
-          {
-            Name: '조승완',
-            ID: 'abc123',
-            Birth: '1998-01-01'
-          },  
-        ],
+          fetchedInvite:{name:'',id:'',birth:''}
       }
+    },
+    computed:{
+        
     },
     
     methods: {
         ...mapActions(["FIND_inviteMember"]),
+        inviteon(data){
+            this.fetchedInvite = this.$store.state.invite;
+            console.log(this.fetchedInvite)
+            this.$store.dispatch("FIND_inviteMember",data)
+            this.fetchedInvite = this.$store.state.invite;
+        }
     }
 }
 </script>
@@ -91,8 +91,6 @@ export default {
         text-align: center;
         margin-top: 80px;
         color: aliceblue;
-        /* margin-top: 75px;
-        margin-left: 525px; */
     }
     #text_messeage1 {
         text-align: center;
@@ -103,7 +101,6 @@ export default {
         text-align: center;
         margin: 0 auto;
         margin-top: 75px;
-        /* margin-right: px; */
         width: 860px;
         height: 40px;
     }

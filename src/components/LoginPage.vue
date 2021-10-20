@@ -38,15 +38,6 @@
         <div style="text-align: center">
             <b-button 
                 variant="outline-primary" 
-                id="signIn_singupbtn" 
-                router
-                :to="{ name: 'SignUpPage' }"
-            >
-                회원가입
-            </b-button>
-
-            <b-button 
-                variant="outline-primary" 
                 id="signIn_submitbtn" 
                 v-on:click="FETCH_LOGIN({ email, password })"
             >
@@ -102,9 +93,6 @@ export default {
         text-align: center;
         margin-top: 75px;
         color: aliceblue;
-        /* display: flex; */
-        /* margin-left: 700px;
-        margin-top: 20px; */
     }
     #input_id {
         text-align: center;

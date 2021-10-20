@@ -3,7 +3,6 @@
     <div class="SignUpPage">
         <h1 id="signUp_h1">회원가입</h1>
         <p id="signup_input_email">이메일 주소:</p>
-            <!-- description="We'll never share your email with anyone else." -->
             <b-form-input
                 id="signup_input-1"
                 v-model="form.email"
@@ -136,14 +135,12 @@ export default {
           },
       onReset(event) {
         event.preventDefault()
-        // Reset our form values
         this.form.email = ''
         this.form.name = ''
         this.form.id = ''
         this.form.password = ''
         this.form.passwordcheck = ''
         this.form.birth = ''
-        // Trick to reset/clear native browser form validation state
         this.show = false
         this.$nextTick(() => {
           this.show = true
@@ -163,7 +160,6 @@ export default {
         background: black;
     }
     #signup_submitbtn {
-        /* margin-left: 350px; */
         margin-top: 20px;
         color: aliceblue;
         background: black;
@@ -178,8 +174,6 @@ export default {
         text-align: center;
         margin-top: 75px;
         color: aliceblue;
-        /* margin-left: 700px;
-        margin-top: 20px; */
     }
     #signup_input_email {
         text-align: center;

@@ -18,7 +18,6 @@
             backdrop 
             bg-variant="info"  
             text-variant="light">
-            <!-- 사이드바 하단부 메뉴 리스트  -->
             <v-card
                 class="mx-auto"
                 width="300"
@@ -57,52 +56,6 @@
 
                         <v-list-item-title>Group List</v-list-item-title>
                     </v-list-item>
-                    <!-- <v-list-group
-                    :value="true"
-                    no-action
-                    sub-group
-                    >
-                    <template v-slot:activator>
-                        <v-list-item-content>
-                        <v-list-item-title>Group Invite</v-list-item-title>
-                        </v-list-item-content>
-                    </template>
-
-                    <v-list-item
-                        v-for="([title, icon], i) in admins"
-                        :key="i"
-                        link
-                    >
-                        <v-list-item-title v-text="title"></v-list-item-title>
-
-                        <v-list-item-icon>
-                        <v-icon v-text="icon"></v-icon>
-                        </v-list-item-icon>
-                    </v-list-item>
-                    </v-list-group> -->
-
-                    <!-- <v-list-group
-                    no-action
-                    sub-group
-                    >
-                    <template v-slot:activator>
-                        <v-list-item-content>
-                        <v-list-item-title>Group Invite</v-list-item-title>
-                        </v-list-item-content>
-                    </template>
-
-                    <v-list-item
-                        v-for="([title, icon], i) in cruds"
-                        :key="i"
-                        link
-                    >
-                        <v-list-item-title v-text="title"></v-list-item-title>
-
-                        <v-list-item-icon>
-                        <v-icon v-text="icon"></v-icon>
-                        </v-list-item-icon>
-                    </v-list-item>
-                    </v-list-group> -->
                 </v-list-group>
 
                 <v-list-item link="">
@@ -146,25 +99,6 @@
                 </v-list-item>
                 </v-list>
             </v-card>
-        <!-- <div>
-            <ul class="menu">
-                <li><a href="#">그룹관리</a></li>
-                    <ul class= "menu2">
-                        <li><a href="#">그룹초대</a></li>
-                        <li><a href="#">그룹목록</a></li>
-                    </ul>
-                <p></p>
-                <li><a href="#">그룹채팅</a></li>
-                <p></p>
-                <li><a href="#">일정관리</a></li>
-                <p></p>
-                <li><a href="#">직원목록</a></li>
-                <p></p>
-                <li><a href="#">급여조회</a></li>
-                <p></p>
-                <li><a href="#">공지사항</a></li>
-            </ul>
-        </div> -->
         </b-sidebar>
     </header>
 </template>
@@ -203,24 +137,6 @@ export default {
     #menu2 {
         margin-left: 20px;
     }
-    /* header ul.menu {
-        position: absolute;
-        top: 150px;
-        padding: 35px;
-    }
-    header ul.menu li {
-        font-family: 'Yu Gothic';
-        list-style: none;
-        padding: 20px 20px;
-        text-align: center;
-    }
-    header ul.menu2 li {
-        font-family: 'Yu Gothic';
-        list-style: circle;
-        padding: 10px 10px;
-        text-align: center;
-        margin-left: 25px;
-    } */
     a {
         text-decoration:none; color : white;
         font-size: 25px;
@@ -228,7 +144,7 @@ export default {
     #sidebar-1 {
         background-color: #747fA5;
     }
-    /* 로그 사이드바 버튼 */
+    
     header {
         margin-left: -8px;
         margin-top: -8px;
@@ -244,7 +160,7 @@ export default {
         background-color: #8dc1e9;
         border-color: #8dc1e9;
     }
-    /* 헤더안에 있는 중앙글자 */
+    
     Header h4{
         width: 100%;
         height: 100%;

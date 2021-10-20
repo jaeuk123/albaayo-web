@@ -4,7 +4,6 @@
       <div class="content-detail-content-info">
         <div class="content-detail-content-info-left">
           <div class="content-detail-content-info-left-number">
-            <!-- {{contentId}} -->
           </div>
           <div class="content-detail-content-info-left-subject">
               {{fethcedNotice.title}}
@@ -31,42 +30,26 @@
       <div class="content-detail-button-delete">
         <b-button variant="success" @click="deleteData">삭제</b-button>
       </div>
-      <!-- <div class="content-detail-comment">
-        <Comment :contentId="contentId"/>
-      </div> -->
     </b-card>
   </div>
 </template>
 
 <script>
-// import data from "@/data";
 import {  mapGetters } from 'vuex';
-// import Comment from "./Comment"
+
 
 export default {
   name: "NoticeDetail",
   components: {
-    // Comment
   },
   
 
   data() {
     return {
       fethcedNotice:this.$store.state.Notice
-      // contentId: ,
-      // title: this.fethceNotice.title,
-      // context:this.fethceNotice.context,
-      // user: this.fethceNotice.name,
-      // created: this.fethceNotice.date
-      // title:  '1',
-      // context:'1',
-      // user: '1',
-      // created: '1'
-    
     }
   },
   methods: {
-    // ...mapActions(['RemoveNotice']),
     deleteData() {
       this.$store.dispatch('RemoveNotice',this.fethcedNotice.noticeId);
       this.$router.push({
@@ -135,7 +118,6 @@ export default {
 }
 
 .content-detail-button-delete {
-  /* border: 1px solid black; */
   padding: 2rem;
   width: 1000px;
   margin-top: -102px;
